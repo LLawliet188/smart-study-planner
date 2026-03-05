@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Planner</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <h1>Study Planner</h1>
+      <p class="sub">Add your study tasks and track them.</p>
+
+      <div class="card">
+        <form id="taskForm">
+          <input id="taskInput" type="text" placeholder="e.g., Java chapter 3" required />
+          <button type="submit">Add</button>
+        </form>
+
+        <ul id="taskList"></ul>
+      </div>
+      <p id="taskCounter"></p>
+      <p id="taskProgress"></p>
+      <p class="hint">Tip: This is the first version. We’ll connect it to the backend next.</p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
