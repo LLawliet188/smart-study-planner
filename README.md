@@ -1,30 +1,49 @@
 # Smart Study Planner
 
-Users may manage their study tasks with this straightforward full-stack study planner.
+Smart Study Planner is a small full-stack web application for organizing study tasks. Users can add tasks, set optional due dates, mark tasks as completed, delete tasks, switch between light and dark mode, and view their completion progress.
 
 ## Features
--Include study assignments
--Mark assignments as completed.
--Eliminate tasks
--Monitor the percentage of completion
 
-## Tech Stack
-Frontend:
-HTML, CSS, JavaScript
+- Add study tasks.
+- Add optional due dates.
+- Mark tasks as completed or undo completion.
+- Delete tasks.
+- Track remaining tasks and completion percentage.
+- Sort unfinished tasks and earlier due dates first.
+- Use a responsive browser interface.
 
-Backend:
-Node.js, Express
+## Technology Choices
 
-## Run the project
+- Frontend: HTML, CSS, JavaScript
+- Backend: Node.js, Express, CORS
+- Persistence: JSON file storage in `backend/tasks.json`
+- Tools: npm, Git, GitHub, browser testing
 
-Install dependencies:
+## Run The Project
 
+Install backend dependencies:
+
+```bash
+cd backend
 npm install
+```
 
-Start the backend server:
+Start the backend and frontend server:
 
-node backend/server.js
+```bash
+npm start
+```
 
-Open the frontend:
+Open the app in a browser:
 
-frontend/index.html
+```text
+http://localhost:3000
+```
+
+## Run Tests
+
+From the `backend` folder:
+
+```bash
+npm test
+```

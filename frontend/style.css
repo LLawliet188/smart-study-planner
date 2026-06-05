@@ -1,30 +1,117 @@
 body {
   font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #eef2ff, #fdf2f8, #ecfeff);
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-shape {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.35;
+  z-index: 0;
+  animation: floatShape 10s ease-in-out infinite;
+}
+
+.shape1 {
+  width: 220px;
+  height: 220px;
+  background: #a5b4fc;
+  top: 40px;
+  left: -60px;
+}
+
+.shape2 {
+  width: 260px;
+  height: 260px;
+  background: #f9a8d4;
+  top: 280px;
+  right: -80px;
+  animation-delay: 2s;
+}
+
+.shape3 {
+  width: 180px;
+  height: 180px;
+  background: #67e8f9;
+  bottom: 30px;
+  left: 35%;
+  animation-delay: 4s;
+}
+
+@keyframes floatShape {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
   background: #f6f7fb;
   margin: 0;
   padding: 0;
 }
 
 .app {
-  max-width: 600px;
+  max-width: 700px;
   margin: 40px auto;
   padding: 0 16px;
+  position: relative;
+  z-index: 1;
 }
 
 h1 {
   margin-bottom: 6px;
+  font-size: 2rem;
+  color: #1e293b;
 }
 
 .sub {
   margin-top: 0;
-  color: #555;
+  color: #475569;
+  font-size: 15px;
 }
 
 .card {
-  background: white;
-  padding: 16px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  animation: fadeUp 0.7s ease;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 form {
@@ -34,16 +121,32 @@ form {
 
 input {
   flex: 1;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #1e293b;
+  transition: 0.3s ease;
+}
+input:focus {
+  outline: none;
+  border-color: #818cf8;
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
 }
 
 button {
   padding: 10px 14px;
-  border: none;
-  border-radius: 8px;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #111827;
   cursor: pointer;
+  transition: all 0.25s ease;
+  font-weight: 600;
+}
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
 ul {
@@ -53,13 +156,15 @@ ul {
 }
 
 li {
-  padding: 10px;
+  padding: 12px 14px;
   border: 1px solid #eee;
-  border-radius: 8px;
-  margin-bottom: 8px;
+  border-radius: 14px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #ffffff;
+  animation: fadeUp 0.35s ease;
 }
 
 .hint {
@@ -95,4 +200,59 @@ li button:hover {
     align-items: flex-start;
     gap: 10px;
   }
+}
+
+body.dark {
+  background: linear-gradient(135deg, #0f172a, #1e1b4b, #111827);
+  color: #f8fafc;
+}
+
+body.dark h1,
+body.dark .sub,
+body.dark #taskCounter,
+body.dark #taskProgress,
+body.dark .hint {
+  color: #e2e8f0;
+}
+
+body.dark .card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.dark input {
+  background: rgba(15, 23, 42, 0.85);
+  color: #fff;
+  border-color: #334155;
+}
+
+body.dark li {
+  background: rgba(15, 23, 42, 0.7);
+  border-color: #334155;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 10px 0 16px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+#progressFill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #818cf8, #ec4899);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.empty-state {
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+  margin-top: 10px;
+  animation: fadeUp 0.5s ease;
 }

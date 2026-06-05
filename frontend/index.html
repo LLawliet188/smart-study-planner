@@ -7,21 +7,35 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+    <div class="bg-shape shape3"></div>
+
     <div class="app">
       <h1>Study Planner</h1>
+      <button id="themeToggle">🌙 Dark Mode</button>
       <p class="sub">Add your study tasks and track them.</p>
 
       <div class="card">
         <form id="taskForm">
           <input id="taskInput" type="text" placeholder="e.g., Java chapter 3" required />
+          <input id="dueDateInput" type="date" />
           <button type="submit">Add</button>
         </form>
 
         <ul id="taskList"></ul>
+        
+        <p id="emptyState" class="empty-state">
+          ✨ No tasks yet — add your first study task!
+        </p>
+        
       </div>
       <p id="taskCounter"></p>
       <p id="taskProgress"></p>
-      <p class="hint">Tip: This is the first version. We’ll connect it to the backend next.</p>
+      <div class="progress-bar">
+        <div id="progressFill"></div>
+      </div>
+      <p class="hint">Tip: Your study tasks are saved through the backend while the server is running.</p>
     </div>
 
     <script src="script.js"></script>
