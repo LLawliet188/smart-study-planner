@@ -29,7 +29,6 @@ function createTaskElement(task) {
   if (task.dueDate && !task.done) {
     const today = new Date();
     const due = new Date(task.dueDate + "T00:00:00");
-
     const todayDate = new Date(today.toDateString());
 
     if (due < todayDate) {
@@ -81,14 +80,14 @@ async function loadTasks() {
   taskList.innerHTML = "";
   const res = await fetch(API_URL);
   const tasks = await res.json();
-  
-  // Show message if there are no tasks
+
+  // Show a simple message when the planner does not have tasks yet.
   if (tasks.length === 0) {
     emptyState.style.display = "block";
   } else {
     emptyState.style.display = "none";
   }
-  
+
   const remaining = tasks.filter((task) => !task.done).length;
   taskCounter.textContent = `${remaining} task(s) remaining`;
 
@@ -138,15 +137,15 @@ taskForm.addEventListener("submit", async (e) => {
   loadTasks();
 });
 
-// Load tasks on page open
+// Load tasks on page open.
 loadTasks();
 
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
 
   if (document.body.classList.contains("dark")) {
-    themeToggle.textContent = "☀ Light Mode";
+    themeToggle.textContent = "Light Mode";
   } else {
-    themeToggle.textContent = "🌙 Dark Mode";
+    themeToggle.textContent = "Dark Mode";
   }
 });
